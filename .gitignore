@@ -1,5 +1,6 @@
-# library output
+# output files
 *.so
+*.o
 
 # README file
 *.md
