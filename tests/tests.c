@@ -2,8 +2,8 @@
 
 int main(void) {
 	
-	unsigned long res_sum = sum(5),
-				  expected_sum = 10;
+	unsigned long res_sum = sum(5);
+	unsigned long expected_sum = 10;
 				  
 	if(res_sum != expected_sum) {
 		fprintf(stderr, "Expected: %lu, Actual: %lu\n", expected_sum, res_sum);

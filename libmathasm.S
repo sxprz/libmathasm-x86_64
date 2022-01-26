@@ -3,6 +3,10 @@
 .global sum
 .global power
 .global absolute
+.global fib
+.global collatz
+.global gcd
+.global lcm
 
 .section .text
 
@@ -21,13 +25,13 @@ sum:
 	and rdi, rax
 	xor rax, rax
 	mov eax, edi
-	dec eax
+	inc eax
 	mul rdi
 	shr rax
 	.endsum:
 	ret
 
-// unsigned long power(int n, int k)
+// unsigned long power(int n, unsigned int k)
 power:
 	ret
 
@@ -36,4 +40,20 @@ absolute:
 	mov rax, rdi
 	mov rdi, 0x7FFFFFFFFFFFFFFF
 	and rax, rdi
+	ret
+
+// unsigned long fib(unsigned long n)
+fib:
+	ret
+	
+// unsigned long collatz(unsigned long n)
+collatz:
+	ret
+	
+// unsigned long gcd(unsigned long n, unsigned long m)
+gcd:
+	ret
+
+// unsigned long lcm(unsigned long n, unsigned long m)
+lcm:
 	ret
