@@ -37,13 +37,42 @@ power:
 
 // unsigned long absolute(long n)
 absolute:
-	mov rax, rdi
-	mov rdi, 0x7FFFFFFFFFFFFFFF
-	and rax, rdi
+	xor rax, rax
+	or rax, rdi
+	jns .endabs
+	neg rax
+	
+	.endabs:
 	ret
 
 // unsigned long fib(unsigned long n)
 fib:
+	test rdi, rdi
+	jz .trivfib
+	cmp rdi, 1
+	jz .trivfib
+
+	push rcx
+	dec rdi
+	mov rcx, rdi
+	xor rdi, rdi
+	mov rax, 1
+	
+	.loopfib:
+	test rcx, rcx
+	jz .endloopfib
+	xadd rax, rdi
+	dec rcx
+	jmp .loopfib
+	
+	.endloopfib:
+	pop rcx
+	jmp .endfib
+	
+	.trivfib:
+	mov rax, rdi
+	
+	.endfib:
 	ret
 	
 // unsigned long collatz(unsigned long n)

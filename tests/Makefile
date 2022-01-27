@@ -1,6 +1,7 @@
 CC ?= cc
 CFLAGS ?= -g -Wall -Wextra -Wpedantic -O2
-LDFLAGS ?= -lmathasm
+#LDFLAGS ?= -lmathasm
+LIBS ?= ../libmathasm.so
 OBJECTS ?= tests.h
 
 .PHONY: all clean
@@ -11,5 +12,5 @@ clean:
 	rm -f tests
 
 tests: tests.c
-	$(CC) $(CFLAGS) -L.. $(OBJECTS) -o $@ $< $(LDFLAGS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $< $(LIBS)
 	./tests

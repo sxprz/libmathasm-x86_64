@@ -20,9 +20,9 @@ extern unsigned long fib(unsigned long n);
 extern unsigned long collatz(unsigned long n);
 
 // Calculate the greatest common divisor of n & m
-extern unsigned long gcd(unsigned long n, unsigned long m)
+extern unsigned long gcd(unsigned long n, unsigned long m);
 
 // Calculate the least common multiplier of n & m
-extern unsigned long lcm(unsigned long n, unsigned long m)
+extern unsigned long lcm(unsigned long n, unsigned long m);
 
 #endif /* libmathasm.h */
