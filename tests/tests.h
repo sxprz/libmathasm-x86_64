@@ -6,4 +6,11 @@
 
 #include "../libmathasm.h"
 
+#define NUM_TESTS 4
+
+void test_sum(void);
+void test_abs(void);
+void test_fib(void);
+void test_pow(void);
+
 #endif /* tests.h */
