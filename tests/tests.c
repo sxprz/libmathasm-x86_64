@@ -26,6 +26,24 @@ int main(void) {
 		return 1;
 	}
 	
+	int in_pow1 = 64;
+	unsigned int in_pow2 = 2;
+	unsigned long res_pow1 = power(in_pow1, in_pow2);
+	unsigned long expected_pow1 = 4096;
+	if(res_pow1 != expected_pow1) {
+		fprintf(stderr, "libmathasm >> pow(%d,%u) | Expected: %lu, Actual: %lu\n", in_pow1, in_pow2, expected_pow1, res_pow1);
+		return 1;
+	}
+	
+	int in_pow3 = 3;
+	unsigned int in_pow4 = 4;
+	unsigned long res_pow2 = power(in_pow3, in_pow4);
+	unsigned long expected_pow2 = 81;
+	if(res_pow1 != expected_pow1) {
+		fprintf(stderr, "libmathasm >> pow(%d,%u) | Expected: %lu, Actual: %lu\n", in_pow3, in_pow4, expected_pow2, res_pow2);
+		return 1;
+	}
+	
 	printf("libmathasm >> Tests passed!\n");
 	return 0;
 }

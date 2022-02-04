@@ -1,4 +1,5 @@
 .intel_syntax noprefix
+
 .global fac
 .global sum
 .global power
@@ -33,6 +34,35 @@ sum:
 
 // unsigned long power(int n, unsigned int k)
 power:
+	test esi, esi
+	jz .endpowone
+	
+	push rsi
+	shr esi, 1
+	call power
+	pop rsi
+	
+	mov ecx, esi
+	and ecx, 1
+	jz .endpowsq
+	
+	mul rax
+	
+	cmp esi, 0
+	jg .powtimesbase
+	div rdi
+	ret
+	
+	.powtimesbase:
+	mul rdi
+	ret
+	
+	.endpowsq:
+	mul rax
+	ret
+	
+	.endpowone:
+	mov rax, 1
 	ret
 
 // unsigned long absolute(long n)
