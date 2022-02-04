@@ -2,7 +2,7 @@
 #define LIBMATHASM_H
 
 // Calculate the factorial of n
-extern unsigned long fac(int n);
+extern unsigned long fac(unsigned int n);
 
 // Calculate the sum of 1 to n
 extern unsigned long sum(int n);

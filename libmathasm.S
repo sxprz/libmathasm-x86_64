@@ -11,8 +11,29 @@
 
 .section .text
 
-// unsigned long fac(int n)
+// unsigned long fac(unsigned int n)
 fac:
+	cmp rdi, 2
+	jbe .trivfac
+
+	xor rax, rax
+	or al, 1
+	xor rcx, rcx
+	or ecx, edi
+	
+	.loopfac:
+	cmp ecx, 1
+	je .endfac
+	
+	mul rcx
+	
+	dec ecx
+	jmp loopfac
+	
+	.trivfac:
+	mov rax, rdi
+	
+	.endfac:
 	ret
 
 // unsigned long sum(int n)

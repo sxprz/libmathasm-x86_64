@@ -7,6 +7,7 @@ int main(void) {
 	test_abs();
 	test_fib();
 	test_pow();
+	test_fac();
 	
 	fprintf(stderr, "Tester >> %d out of %d functions (%.0f%%) have passed the unit tests.\n", test_passed_counter, NUM_TESTS, (100*test_passed_counter/(float)NUM_TESTS));
 	return (test_passed_counter != NUM_TESTS);
@@ -63,6 +64,27 @@ void test_pow(void) {
 	expected_pow = 81;
 	if(res_pow != expected_pow) {
 		fprintf(stderr, "libmathasm >> pow(%d,%u) | Expected: %lu, Actual: %lu\n", in_pow1, in_pow2, expected_pow, res_pow);
+		return;
+	}
+	
+	++test_passed_counter;
+}
+
+
+void test_fac(void) {
+	unsigned int in_fac = 5;
+	unsigned long expected_fac = 120;
+	unsigned long res_fac = fac(in_fac);
+	if(res_fac != expected_fac) {
+		fprintf(stderr, "libmathasm >> fac(%du) | Expected: %lu, Actual: %lu\n", in_fac, expected_fac, res_fac);
+		return;
+	}
+	
+	in_fac = 17;
+	expected_fac = 355687428096000;
+	res_fac = fac(in_fac);
+	if(res_fac != expected_fac) {
+		fprintf(stderr, "libmathasm >> fac(%du) | Expected: %lu, Actual: %lu\n", in_fac, expected_fac, res_fac);
 		return;
 	}
 	
