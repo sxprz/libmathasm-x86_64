@@ -18,8 +18,8 @@ fac:
 
 	xor rax, rax
 	or al, 1
-	xor rcx, rcx
-	or ecx, edi
+	mov ecx, edi
+	cdqe
 	
 	.loopfac:
 	cmp ecx, 1
@@ -28,7 +28,7 @@ fac:
 	mul rcx
 	
 	dec ecx
-	jmp loopfac
+	jmp .loopfac
 	
 	.trivfac:
 	mov rax, rdi
@@ -128,6 +128,30 @@ fib:
 	
 // unsigned long collatz(unsigned long n)
 collatz:
+	xor rcx, rcx
+	mov rdx, rdi
+	
+	.loopcollatz:
+	cmp rdx, 1
+	jz .endcollatz
+	
+	test rdx, 1
+	jz .evencollatz
+	
+	mov r8, rdx
+	shl rdx, 1
+	add rdx, r8
+	inc rdx
+	inc rcx
+	
+	.evencollatz:
+	shr rdx, 1
+	inc rcx
+	
+	jmp .loopcollatz
+	
+	.endcollatz:
+	mov rax, rcx
 	ret
 	
 // unsigned long gcd(unsigned long n, unsigned long m)

@@ -8,6 +8,7 @@ int main(void) {
 	test_fib();
 	test_pow();
 	test_fac();
+	test_collatz();
 	
 	fprintf(stderr, "Tester >> %d out of %d functions (%.0f%%) have passed the unit tests.\n", test_passed_counter, NUM_TESTS, (100*test_passed_counter/(float)NUM_TESTS));
 	return (test_passed_counter != NUM_TESTS);
@@ -85,6 +86,19 @@ void test_fac(void) {
 	res_fac = fac(in_fac);
 	if(res_fac != expected_fac) {
 		fprintf(stderr, "libmathasm >> fac(%du) | Expected: %lu, Actual: %lu\n", in_fac, expected_fac, res_fac);
+		return;
+	}
+	
+	++test_passed_counter;
+}
+
+
+void test_collatz(void) {
+	unsigned long expected_collatz = 5;
+	unsigned long in_collatz = 5;
+	unsigned long res_collatz = collatz(in_collatz);
+	if(res_collatz != expected_collatz) {
+		fprintf(stderr, "libmathasm >> collatz(%lu) | Expected: %lu, Actual: %lu\n", in_collatz, expected_collatz, res_collatz);
 		return;
 	}
 	
